@@ -20,6 +20,7 @@ class FilmController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "Films"
         tableView.register(SubtitleViewCell.self, forCellReuseIdentifier: cellId)
+        Service.shared.fetchData()
         
     }
     
