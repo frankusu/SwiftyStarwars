@@ -8,12 +8,11 @@
 
 import Foundation
 
-
 class Service {
     // Singleton
     static let shared = Service()
     
-    func fetchData() {
+    func fetchData(completion: @escaping ([Film],Error?) -> () ) {
         let url = "https://swapi.co/api/films/"
         guard let swurl = URL(string: url) else {return}
         
@@ -22,21 +21,22 @@ class Service {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             if let error = error {
+                completion([],error)
                 print("Error getting data", error)
             }
             
             guard let data = data else {return}
             do {
                 let filmResults = try decoder.decode(Films.self, from: data)
-                filmResults.results.forEach({
-                    print("Title: \($0.title) EpisodeId: \($0.episodeId)")
-                })
+                completion(filmResults.results,nil)
+//                filmResults.results.forEach({
+//                    print("Title: \($0.title) EpisodeId: \($0.episodeId)")
+//                })
             } catch {
                 print("Error decoding JSON", error)
+                completion([],error)
             }
             
         }.resume()
-
     }
-    
 }
