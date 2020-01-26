@@ -11,14 +11,15 @@ import UIKit
 class FilmDetailController: UITableViewController {
 
     fileprivate let cellId = "category"
+    fileprivate var setExpand = true
     
     let characters = ["LukeSkywalker","Yoda Boi"," Obi wan my true one","Chubaka","Piew piew",]
     let vehicles = ["deathStar?","x-wing", "bmw x3", "GTR"]
     let planets = ["Arrakis","Death Star","Pluto"]
     lazy var twoDimensionArray = [
-        characters,
-        vehicles,
-        planets
+        ExpandedFilm(isExpanded: setExpand, info: characters),
+        ExpandedFilm(isExpanded: setExpand, info: vehicles),
+        ExpandedFilm(isExpanded: setExpand, info: planets)
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +32,8 @@ class FilmDetailController: UITableViewController {
         button.setTitle("CLOSE", for: .normal)
         button.backgroundColor = .yellow
         button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
         button.tag = section
         return button
     }
@@ -41,11 +42,18 @@ class FilmDetailController: UITableViewController {
         
         let section = button.tag
         var indexPaths = [IndexPath]()
-        for index in twoDimensionArray[section].indices {
+        for index in twoDimensionArray[section].info.indices {
             indexPaths.append(IndexPath(row: index, section: section))
         }
-        twoDimensionArray[section].removeAll()
-        tableView.deleteRows(at: indexPaths, with: .fade)
+        let isExpanded = twoDimensionArray[section].isExpanded
+        twoDimensionArray[section].isExpanded = !isExpanded
+        button.setTitle(isExpanded ? "Expand" : "Collapse", for: .normal)
+        if isExpanded {
+            tableView.deleteRows(at: indexPaths, with: .fade)
+        } else {
+            tableView.insertRows(at: indexPaths, with: .fade)
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -58,11 +66,14 @@ class FilmDetailController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        cell.textLabel?.text = twoDimensionArray[indexPath.section][indexPath.row]
+        cell.textLabel?.text = twoDimensionArray[indexPath.section].info[indexPath.row]
         return cell
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return twoDimensionArray[section].count
+        if !twoDimensionArray[section].isExpanded {
+            return 0
+        }
+        return twoDimensionArray[section].info.count
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
