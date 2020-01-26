@@ -27,10 +27,29 @@ class FilmDetailController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        label.text = "HEADER"
-        return label
+        let button = UIButton()
+        button.setTitle("CLOSE", for: .normal)
+        button.backgroundColor = .yellow
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.tag = section
+        return button
+    }
+    
+    @objc func handleExpandClose(button : UIButton) {
+        
+        let section = button.tag
+        var indexPaths = [IndexPath]()
+        for index in twoDimensionArray[section].indices {
+            indexPaths.append(IndexPath(row: index, section: section))
+        }
+        twoDimensionArray[section].removeAll()
+        tableView.deleteRows(at: indexPaths, with: .fade)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 36
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,9 +65,9 @@ class FilmDetailController: UITableViewController {
         return twoDimensionArray[section].count
     }
 
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(DetailController(), animated: true)
     }
 
+    
 }
