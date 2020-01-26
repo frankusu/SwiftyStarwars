@@ -14,6 +14,8 @@
 		4E731EB123DAD9D9006E58AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E731EB023DAD9D9006E58AB /* Assets.xcassets */; };
 		4E731EB423DAD9D9006E58AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E731EB223DAD9D9006E58AB /* LaunchScreen.storyboard */; };
 		4E731EBF23DBB61B006E58AB /* SubtitleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E731EBE23DBB61B006E58AB /* SubtitleViewCell.swift */; };
+		4E731EC123DCFA31006E58AB /* FilmDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E731EC023DCFA30006E58AB /* FilmDetailController.swift */; };
+		4E731EE923DD2173006E58AB /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E731EE823DD2173006E58AB /* DetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		4E731EB323DAD9D9006E58AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E731EB523DAD9D9006E58AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E731EBE23DBB61B006E58AB /* SubtitleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleViewCell.swift; sourceTree = "<group>"; };
+		4E731EC023DCFA30006E58AB /* FilmDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailController.swift; sourceTree = "<group>"; };
+		4E731EE823DD2173006E58AB /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				4E731EAB23DAD9D6006E58AB /* FilmController.swift */,
+				4E731EC023DCFA30006E58AB /* FilmDetailController.swift */,
+				4E731EE823DD2173006E58AB /* DetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +175,8 @@
 				4E731EAC23DAD9D6006E58AB /* FilmController.swift in Sources */,
 				4E731EA823DAD9D6006E58AB /* AppDelegate.swift in Sources */,
 				4E731EAA23DAD9D6006E58AB /* SceneDelegate.swift in Sources */,
+				4E731EE923DD2173006E58AB /* DetailController.swift in Sources */,
+				4E731EC123DCFA31006E58AB /* FilmDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

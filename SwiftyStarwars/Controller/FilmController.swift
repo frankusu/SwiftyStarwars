@@ -10,7 +10,9 @@ import UIKit
 
 class FilmController: UITableViewController {
     
-    let cellId = "filmCell"
+    fileprivate let cellId = "filmCell"
+    var selectedItem = [String]()
+    var filmName = ""
     
     let filmArray = ["A new hope", "Attack of the Clones", "The phatom menance", "Revenge of the Sith","Return of the Jedi","The Empire Strikes Back","The Force Awakens"]
     let detailFiller = ["S","T","A","R","W","A","R"]
@@ -18,6 +20,7 @@ class FilmController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "Films"
         tableView.register(SubtitleViewCell.self, forCellReuseIdentifier: cellId)
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,13 +38,8 @@ class FilmController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected index \(indexPath.row)")
-        let metaDataController = UITableViewController()
-        metaDataController.modalPresentationStyle = .fullScreen
-//        metaDataController.navigationController = UINavigationController()
-        metaDataController.navigationItem.backBarButtonItem?.title = "Back"
-        present(metaDataController, animated: true) {
-            print("Added table view on top")
-        }
+        navigationController?.pushViewController(FilmDetailController(), animated: true)
+        
     }
 
 }
