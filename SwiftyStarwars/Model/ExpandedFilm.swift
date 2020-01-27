@@ -10,5 +10,5 @@ import Foundation
 
 struct ExpandedFilm {
     var isExpanded : Bool
-    var info : [String]
+    var info : [Any]
 }

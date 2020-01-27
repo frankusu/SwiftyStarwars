@@ -13,6 +13,7 @@ class FilmDetailController: UITableViewController {
     fileprivate let cellId = "category"
     fileprivate var setExpand = true
     fileprivate let categoryHeader = ["Details","Characters","Planets","Starships","Vehicles","Species"]
+    var filmDetails = [Film]()
     
     let characters = ["LukeSkywalker","Yoda Boi"," Obi wan my true one","Chubaka","Piew piew",]
     let vehicles = ["deathStar?","x-wing", "bmw x3", "GTR"]
@@ -26,8 +27,12 @@ class FilmDetailController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "Film Detail"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+    
     }
     
+    func printFilmDetails() {
+        
+    }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton()
         let category = categoryHeader[section]
@@ -68,7 +73,7 @@ class FilmDetailController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        cell.textLabel?.text = twoDimensionArray[indexPath.section].info[indexPath.row]
+        cell.textLabel?.text = twoDimensionArray[indexPath.section].info[indexPath.row] as? String
         return cell
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

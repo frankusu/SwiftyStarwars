@@ -15,7 +15,7 @@ struct Films : Decodable {
 struct Film : Decodable {
     let title : String
     let episodeId : Int
-    let openingCrawl : String
+//    let openingCrawl : String
     let director : String
     let producer : String
     let releaseDate : String

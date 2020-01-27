@@ -12,11 +12,7 @@ class FilmController: UITableViewController {
     
     fileprivate let cellId = "filmCell"
     fileprivate var filmResults = [Film]()
-    var selectedItem = [String]()
-    var filmName = ""
-    
-//    let filmArray = ["A new hope", "Attack of the Clones", "The phatom menance", "Revenge of the Sith","Return of the Jedi","The Empire Strikes Back","The Force Awakens"]
-//    let detailFiller = ["S","T","A","R","W","A","R"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Films"
@@ -51,7 +47,9 @@ class FilmController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected index \(indexPath.row)")
-        navigationController?.pushViewController(FilmDetailController(), animated: true)
+        let filmDetailController = FilmDetailController()
+        filmDetailController.filmDetails = self.filmResults
+        navigationController?.pushViewController(filmDetailController, animated: true)
         
     }
 
