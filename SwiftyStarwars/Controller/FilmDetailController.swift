@@ -13,12 +13,13 @@ class FilmDetailController: UITableViewController {
     fileprivate let cellId = "category"
     fileprivate var setExpand = true
     fileprivate let categoryHeader = ["Details","Characters","Planets","Starships","Vehicles","Species"]
-    var filmDetails = [Film]()
+    var filmDetails = [String]()
     
     let characters = ["LukeSkywalker","Yoda Boi"," Obi wan my true one","Chubaka","Piew piew",]
     let vehicles = ["deathStar?","x-wing", "bmw x3", "GTR"]
     let planets = ["Arrakis","Death Star","Pluto"]
     lazy var twoDimensionArray = [
+        ExpandedFilm(isExpanded: setExpand, info: filmDetails),
         ExpandedFilm(isExpanded: setExpand, info: characters),
         ExpandedFilm(isExpanded: setExpand, info: vehicles),
         ExpandedFilm(isExpanded: setExpand, info: planets)

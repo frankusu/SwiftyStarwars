@@ -48,10 +48,22 @@ class FilmController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected index \(indexPath.row)")
         let filmDetailController = FilmDetailController()
-        filmDetailController.filmDetails = self.filmResults
+        filmDetailController.filmDetails = prepareData(filmDetail: self.filmResults[indexPath.row])
         navigationController?.pushViewController(filmDetailController, animated: true)
         
     }
 
 }
-
+extension FilmController {
+    //TODO: Find a better way to make struct into array
+    func prepareData(filmDetail: Film) -> [String] {
+        var filmDetails = [String]()
+        print("Prepare Data for ", filmDetail.title)
+        filmDetails.append("Title: \(filmDetail.title)")
+        filmDetails.append("Director: \(filmDetail.director)")
+        filmDetails.append("Episode: \(filmDetail.episodeId)")
+        filmDetails.append("Producer: \(filmDetail.producer)")
+        filmDetails.append("Release Date: \(filmDetail.releaseDate)")
+        return filmDetails
+    }
+}
