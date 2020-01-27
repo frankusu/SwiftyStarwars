@@ -12,6 +12,7 @@ class FilmDetailController: UITableViewController {
 
     fileprivate let cellId = "category"
     fileprivate var setExpand = true
+    fileprivate let categoryHeader = ["Details","Characters","Planets","Starships","Vehicles","Species"]
     
     let characters = ["LukeSkywalker","Yoda Boi"," Obi wan my true one","Chubaka","Piew piew",]
     let vehicles = ["deathStar?","x-wing", "bmw x3", "GTR"]
@@ -29,7 +30,8 @@ class FilmDetailController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton()
-        button.setTitle("CLOSE", for: .normal)
+        let category = categoryHeader[section]
+        button.setTitle(category, for: .normal)
         button.backgroundColor = .yellow
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)

@@ -19,6 +19,11 @@
 		4E731EEB23DD4E7C006E58AB /* FilmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E731EEA23DD4E7C006E58AB /* FilmModel.swift */; };
 		4E731EEE23DD4FF2006E58AB /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E731EED23DD4FF2006E58AB /* Service.swift */; };
 		4E731EF023DE5037006E58AB /* ExpandedFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E731EEF23DE5036006E58AB /* ExpandedFilm.swift */; };
+		4E731EF223DE8180006E58AB /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E731EF123DE817F006E58AB /* CharacterModel.swift */; };
+		4E731EF423DE8199006E58AB /* PlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E731EF323DE8199006E58AB /* PlanetModel.swift */; };
+		4E731EF623DE81B7006E58AB /* StarshipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E731EF523DE81B7006E58AB /* StarshipModel.swift */; };
+		4E731EF823DE81C5006E58AB /* VehicleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E731EF723DE81C5006E58AB /* VehicleModel.swift */; };
+		4E731EFA23DE81F5006E58AB /* SpeciesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E731EF923DE81F5006E58AB /* SpeciesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		4E731EEA23DD4E7C006E58AB /* FilmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmModel.swift; sourceTree = "<group>"; };
 		4E731EED23DD4FF2006E58AB /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		4E731EEF23DE5036006E58AB /* ExpandedFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFilm.swift; sourceTree = "<group>"; };
+		4E731EF123DE817F006E58AB /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		4E731EF323DE8199006E58AB /* PlanetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetModel.swift; sourceTree = "<group>"; };
+		4E731EF523DE81B7006E58AB /* StarshipModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipModel.swift; sourceTree = "<group>"; };
+		4E731EF723DE81C5006E58AB /* VehicleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleModel.swift; sourceTree = "<group>"; };
+		4E731EF923DE81F5006E58AB /* SpeciesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +105,13 @@
 		4E731EBC23DBA943006E58AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4E731EEA23DD4E7C006E58AB /* FilmModel.swift */,
 				4E731EEF23DE5036006E58AB /* ExpandedFilm.swift */,
+				4E731EEA23DD4E7C006E58AB /* FilmModel.swift */,
+				4E731EF123DE817F006E58AB /* CharacterModel.swift */,
+				4E731EF323DE8199006E58AB /* PlanetModel.swift */,
+				4E731EF523DE81B7006E58AB /* StarshipModel.swift */,
+				4E731EF723DE81C5006E58AB /* VehicleModel.swift */,
+				4E731EF923DE81F5006E58AB /* SpeciesModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,12 +204,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E731EBF23DBB61B006E58AB /* SubtitleViewCell.swift in Sources */,
+				4E731EF623DE81B7006E58AB /* StarshipModel.swift in Sources */,
+				4E731EFA23DE81F5006E58AB /* SpeciesModel.swift in Sources */,
+				4E731EF223DE8180006E58AB /* CharacterModel.swift in Sources */,
+				4E731EF423DE8199006E58AB /* PlanetModel.swift in Sources */,
 				4E731EAC23DAD9D6006E58AB /* FilmController.swift in Sources */,
 				4E731EA823DAD9D6006E58AB /* AppDelegate.swift in Sources */,
 				4E731EAA23DAD9D6006E58AB /* SceneDelegate.swift in Sources */,
 				4E731EE923DD2173006E58AB /* DetailController.swift in Sources */,
 				4E731EF023DE5037006E58AB /* ExpandedFilm.swift in Sources */,
 				4E731EEE23DD4FF2006E58AB /* Service.swift in Sources */,
+				4E731EF823DE81C5006E58AB /* VehicleModel.swift in Sources */,
 				4E731EC123DCFA31006E58AB /* FilmDetailController.swift in Sources */,
 				4E731EEB23DD4E7C006E58AB /* FilmModel.swift in Sources */,
 			);
