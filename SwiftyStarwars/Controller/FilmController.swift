@@ -44,11 +44,11 @@ class FilmController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filmResults.count
     }
-    
+    // Pass data forward using properties
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected index \(indexPath.row)")
         let filmDetailController = FilmDetailController()
-        filmDetailController.filmDetails = prepareData(filmDetail: self.filmResults[indexPath.row])
+        prepareData(filmDetail: self.filmResults[indexPath.row],dc: filmDetailController)
         navigationController?.pushViewController(filmDetailController, animated: true)
         
     }
@@ -56,14 +56,21 @@ class FilmController: UITableViewController {
 }
 extension FilmController {
     //TODO: Find a better way to make struct into array
-    func prepareData(filmDetail: Film) -> [String] {
-        var filmDetails = [String]()
+    func prepareData(filmDetail: Film, dc : FilmDetailController) {
+        var filmMeta = [String]()
         print("Prepare Data for ", filmDetail.title)
-        filmDetails.append("Title: \(filmDetail.title)")
-        filmDetails.append("Director: \(filmDetail.director)")
-        filmDetails.append("Episode: \(filmDetail.episodeId)")
-        filmDetails.append("Producer: \(filmDetail.producer)")
-        filmDetails.append("Release Date: \(filmDetail.releaseDate)")
-        return filmDetails
+        filmMeta.append("Title: \(filmDetail.title)")
+        filmMeta.append("Director: \(filmDetail.director)")
+        filmMeta.append("Episode: \(filmDetail.episodeId)")
+        filmMeta.append("Producer: \(filmDetail.producer)")
+        filmMeta.append("Release Date: \(filmDetail.releaseDate)")
+        
+        dc.filmDetails = filmMeta
+        dc.characters = filmDetail.characters
+        dc.planets = filmDetail.planets
+        dc.starships = filmDetail.starships
+        dc.vehicles = filmDetail.vehicles
+        dc.species = filmDetail.species
+
     }
 }

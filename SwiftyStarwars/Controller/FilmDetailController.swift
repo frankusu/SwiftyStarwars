@@ -13,16 +13,25 @@ class FilmDetailController: UITableViewController {
     fileprivate let cellId = "category"
     fileprivate var setExpand = true
     fileprivate let categoryHeader = ["Details","Characters","Planets","Starships","Vehicles","Species"]
-    var filmDetails = [String]()
     
-    let characters = ["LukeSkywalker","Yoda Boi"," Obi wan my true one","Chubaka","Piew piew",]
-    let vehicles = ["deathStar?","x-wing", "bmw x3", "GTR"]
-    let planets = ["Arrakis","Death Star","Pluto"]
+    var filmPackage = [[String]]()
+    var filmDetails = [String]()
+    var characters = [String]()
+    var planets = [String]()
+    var starships = [String]()
+    var vehicles = [String]()
+    var species = [String]()
+//    var twoDimensionArray = [[]]
+//    let characters = ["LukeSkywalker","Yoda Boi"," Obi wan my true one","Chubaka","Piew piew",]
+//    let vehicles = ["deathStar?","x-wing", "bmw x3", "GTR"]
+//    let planets = ["Arrakis","Death Star","Pluto"]
     lazy var twoDimensionArray = [
         ExpandedFilm(isExpanded: setExpand, info: filmDetails),
         ExpandedFilm(isExpanded: setExpand, info: characters),
+        ExpandedFilm(isExpanded: setExpand, info: planets),
+        ExpandedFilm(isExpanded: setExpand, info: starships),
         ExpandedFilm(isExpanded: setExpand, info: vehicles),
-        ExpandedFilm(isExpanded: setExpand, info: planets)
+        ExpandedFilm(isExpanded: setExpand, info: species)
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +40,9 @@ class FilmDetailController: UITableViewController {
     
     }
     
-    func printFilmDetails() {
-        
-    }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton()
+        print("Section", section)
         let category = categoryHeader[section]
         button.setTitle(category, for: .normal)
         button.backgroundColor = .yellow

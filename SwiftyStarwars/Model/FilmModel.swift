@@ -19,6 +19,7 @@ struct Film : Decodable {
     let director : String
     let producer : String
     let releaseDate : String
+    let characters,planets,starships,vehicles,species : [String]
     
 }
 
