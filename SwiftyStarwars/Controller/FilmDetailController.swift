@@ -7,14 +7,20 @@
 //
 
 import UIKit
-
+enum Starwars : Int {
+    case characters = 1
+    case planets = 2
+    case starships = 3
+    case vehicles = 4
+    case species = 5
+}
 class FilmDetailController: UITableViewController {
 
     fileprivate let cellId = "category"
     fileprivate var setExpand = true
     fileprivate let categoryHeader = ["Details","Characters","Planets","Starships","Vehicles","Species"]
     
-    //Probably can put these in a model object
+    // Probably can reduce these or put them in model object
     var filmPackage = [[String]]()
     var filmDetails = [String]()
     
@@ -43,80 +49,22 @@ class FilmDetailController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "Film Detail"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        fetchCharacter()
-        fetchPlanet()
+        fetchAllData()
     }
-    
-    func fetchCharacter() {
-        let characterGroup = DispatchGroup()
-        for (index,url) in charactersUrl.enumerated() {
-            characterGroup.enter()
-            Service.shared.fetchCharacter(url: url) { (character, error) in
-                if let error = error {
-                    print("Error fetching character", error)
-                }
-                characterGroup.leave()
-                print("Index \(index) :\(character!.name)")
-                self.characters.append(character!.name)
-            }
-        }
-        characterGroup.notify(queue: DispatchQueue.main) {
-            print("Successfully retrieved all character names")
-            // Need to update twoDimensionArray for tableView.reloadData to reload
-            self.twoDimensionArray[1] = ExpandedFilm(isExpanded: self.setExpand, info: self.characters)
-            self.tableView.reloadData()
-        }
-    }
-    
-    func fetchPlanet() {
-        let planetGroup = DispatchGroup()
-        for (index,url) in planetsUrl.enumerated() {
-            planetGroup.enter()
-            Service.shared.fetchPlanet(url: url) { (planet, error) in
-                if let error = error {
-                    print("Error fetching planet", error)
-                }
-                planetGroup.leave()
-                print("Index \(index) :\(planet!.name)")
-                self.planets.append(planet!.name)
-            }
-        }
-        planetGroup.notify(queue: DispatchQueue.main) {
-            print("Successfully retrieved all planet names")
-            // Need to update twoDimensionArray for tableView.reloadData to reload
-            self.twoDimensionArray[2] = ExpandedFilm(isExpanded: self.setExpand, info: self.planets)
-            self.tableView.reloadData()
-        }
-    }
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton()
         print("Section", section)
         let category = categoryHeader[section]
         button.setTitle(category, for: .normal)
-        button.backgroundColor = .yellow
-        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .black
+        button.setTitleColor(.yellow, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.addTarget(self, action: #selector(handleExpandClose), for: .touchUpInside)
         button.tag = section
         return button
     }
-    
-    @objc func handleExpandClose(button : UIButton) {
-        let section = button.tag
-        var indexPaths = [IndexPath]()
-        for index in twoDimensionArray[section].info.indices {
-            indexPaths.append(IndexPath(row: index, section: section))
-        }
-        let isExpanded = twoDimensionArray[section].isExpanded
-        twoDimensionArray[section].isExpanded = !isExpanded
-        button.setTitle(isExpanded ? "Expand" : "Collapse", for: .normal)
-        if isExpanded {
-            tableView.deleteRows(at: indexPaths, with: .fade)
-        } else {
-            tableView.insertRows(at: indexPaths, with: .fade)
-        }
-    }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 36
     }
@@ -141,6 +89,51 @@ class FilmDetailController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(DetailController(), animated: true)
     }
+}
+extension FilmDetailController {
+    @objc func handleExpandClose(button : UIButton) {
+        let section = button.tag
+        var indexPaths = [IndexPath]()
+        for index in twoDimensionArray[section].info.indices {
+            indexPaths.append(IndexPath(row: index, section: section))
+        }
+        let isExpanded = twoDimensionArray[section].isExpanded
+        twoDimensionArray[section].isExpanded = !isExpanded
+        button.setTitle(isExpanded ? "Expand" : "Collapse", for: .normal)
+        if isExpanded {
+            tableView.deleteRows(at: indexPaths, with: .fade)
+        } else {
+            tableView.insertRows(at: indexPaths, with: .fade)
+        }
+    }
 
-    
+    //TODO: Refactor later on
+    func fetchAllData() {
+        let dispatchGroup = DispatchGroup()
+        
+        for (index,url) in charactersUrl.enumerated() {
+            dispatchGroup.enter()
+            Service.shared.fetchCharacter(url: url) { (result, error) in
+                dispatchGroup.leave()
+                print("Index \(index) :\(result!.name)")
+                self.characters.append(result!.name)
+            }
+        }
+        for (index,url) in planetsUrl.enumerated() {
+            dispatchGroup.enter()
+            Service.shared.fetchPlanet(url: url) { (result, error) in
+                dispatchGroup.leave()
+                print("Index \(index) :\(result!.name)")
+                self.planets.append(result!.name)
+            }
+        }
+
+        dispatchGroup.notify(queue: DispatchQueue.main) {
+            print("Successfully retrieved all data")
+            // Update twoDimensionArray for tableView.reloadData to reload
+            self.twoDimensionArray[Starwars.characters.rawValue] = ExpandedFilm(isExpanded: self.setExpand, info: self.characters)
+            self.twoDimensionArray[Starwars.planets.rawValue] = ExpandedFilm(isExpanded: self.setExpand, info: self.planets)
+            self.tableView.reloadData()
+        }
+    }
 }
