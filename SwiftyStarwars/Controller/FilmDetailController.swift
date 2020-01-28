@@ -74,7 +74,7 @@ class FilmDetailController: UITableViewController {
             planetGroup.enter()
             Service.shared.fetchPlanet(url: url) { (planet, error) in
                 if let error = error {
-                    print("Error fetching character", error)
+                    print("Error fetching planet", error)
                 }
                 planetGroup.leave()
                 print("Index \(index) :\(planet!.name)")
@@ -82,7 +82,7 @@ class FilmDetailController: UITableViewController {
             }
         }
         planetGroup.notify(queue: DispatchQueue.main) {
-            print("Successfully retrieved all character names")
+            print("Successfully retrieved all planet names")
             // Need to update twoDimensionArray for tableView.reloadData to reload
             self.twoDimensionArray[2] = ExpandedFilm(isExpanded: self.setExpand, info: self.planets)
             self.tableView.reloadData()

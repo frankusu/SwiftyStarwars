@@ -34,30 +34,17 @@ class Service {
     }
     
     func fetchCharacter(url : String, completion: @escaping (Character?,Error?) -> () ) {
-        guard let charurl = URL(string: url) else {return}
-        URLSession.shared.dataTask(with: charurl) {data,response,error in
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            if let error = error {
-                completion(nil,error)
-                print("Error getting data", error)
-                return
-            }
-            guard let data = data else {return}
-            do {
-                let character = try decoder.decode(Character.self, from: data)
-                completion(character,nil)
-            } catch {
-                print("Error decoding JSON", error)
-                completion(nil,error)
-                return
-            }
-        }.resume()
+        fetchGenericData(urlString: url, completion: completion)
     }
     
     func fetchPlanet(url : String, completion: @escaping (Planet?,Error?) -> () ) {
-        guard let rurl = URL(string: url) else {return}
-        URLSession.shared.dataTask(with: rurl) {data,response,error in
+        fetchGenericData(urlString: url, completion: completion)
+    }
+    
+    func fetchGenericData<T : Decodable>(urlString : String, completion: @escaping (T?, Error?) -> () ){
+        guard let url = URL(string: urlString) else {return}
+        print("T is of type", T.self)
+        URLSession.shared.dataTask(with: url) {data,response,error in
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             if let error = error {
@@ -67,7 +54,7 @@ class Service {
             }
             guard let data = data else {return}
             do {
-                let result = try decoder.decode(Planet.self, from: data)
+                let result = try decoder.decode(T.self, from: data)
                 completion(result,nil)
             } catch {
                 print("Error decoding JSON", error)
