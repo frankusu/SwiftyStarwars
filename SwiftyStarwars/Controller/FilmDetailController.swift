@@ -37,6 +37,12 @@ class FilmDetailController: UITableViewController {
     var vehicles = [String]()
     var species = [String]()
     
+    var charactersDetailUrl = [String]()
+    var planetsDetailUrl = [String]()
+    var starshipsDetailUrl = [String]()
+    var vehiclesDetailUrl = [String]()
+    var speciesDetailUrl = [String]()
+    
     // To create expandable table sections
     lazy var twoDimensionArray = [
         ExpandedFilm(isExpanded: false, info: filmDetails),
@@ -45,6 +51,14 @@ class FilmDetailController: UITableViewController {
         ExpandedFilm(isExpanded: setExpand, info: starships),
         ExpandedFilm(isExpanded: setExpand, info: vehicles),
         ExpandedFilm(isExpanded: setExpand, info: species)
+    ]
+    //TODO: Make url a dictionary part of names array so don't need to duplicate
+    lazy var twoDimensionUrl = [
+        ExpandedFilm(isExpanded: setExpand, info: charactersDetailUrl),
+        ExpandedFilm(isExpanded: setExpand, info: planetsDetailUrl),
+        ExpandedFilm(isExpanded: setExpand, info: starshipsDetailUrl),
+        ExpandedFilm(isExpanded: setExpand, info: vehiclesDetailUrl),
+        ExpandedFilm(isExpanded: setExpand, info: speciesDetailUrl)
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,8 +102,15 @@ class FilmDetailController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailController = DetailController()
+        if indexPath.section == 0 {
+            tableView.deselectRow(at: indexPath, animated: true)
+        } else {
+            detailController.detailUrl = charactersDetailUrl[indexPath.row]
+            print(characters[indexPath.row],charactersDetailUrl[indexPath.row])
+            navigationController?.pushViewController(DetailController(), animated: true)
+        }
         
-        navigationController?.pushViewController(DetailController(), animated: true)
     }
 }
 extension FilmDetailController {
@@ -117,8 +138,10 @@ extension FilmDetailController {
             dispatchGroup.enter()
             Service.shared.fetchCharacter(url: url) { (result, error) in
                 dispatchGroup.leave()
-                print("Index \(index) :\(result!.name)")
+//                print("Index \(index) :\(result!.name)")
+                print("Index \(index) :\(result!.url)")
                 self.characters.append(result!.name)
+                self.charactersDetailUrl.append(result!.url)
             }
         }
         for (index,url) in planetsUrl.enumerated() {
