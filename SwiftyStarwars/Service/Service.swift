@@ -44,6 +44,7 @@ class Service {
             if let error = error {
                 completion(nil,error)
                 print("Error getting data", error)
+                return
             }
             guard let data = data else {return}
             do {
@@ -52,6 +53,7 @@ class Service {
             } catch {
                 print("Error decoding JSON", error)
                 completion(nil,error)
+                return
             }
         }.resume()
     }

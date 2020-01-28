@@ -30,7 +30,7 @@ class FilmDetailController: UITableViewController {
     var vehicles = [String]()
     var species = [String]()
     
-    
+    // To create expandable table sections
     lazy var twoDimensionArray = [
         ExpandedFilm(isExpanded: setExpand, info: filmDetails),
         ExpandedFilm(isExpanded: setExpand, info: characters),
@@ -47,10 +47,24 @@ class FilmDetailController: UITableViewController {
     }
     
     func fetchCharacter() {
-        for url in charactersUrl {
-            print("fetchCharacter",url)
+        let characterGroup = DispatchGroup()
+        for (index,url) in charactersUrl.enumerated() {
+            characterGroup.enter()
+            Service.shared.fetchCharacter(url: url) { (character, error) in
+                if let error = error {
+                    print("Error fetching character", error)
+                }
+                characterGroup.leave()
+                print("Index \(index) :\(character!.name)")
+                self.characters.append(character!.name)
+            }
         }
-//        Service.shared.fetchCharacter(url: <#T##String#>, completion: <#T##(Character?, Error?) -> ()#>)
+        characterGroup.notify(queue: DispatchQueue.main) {
+            print("Successfully retrieved all character names")
+            // Need to update twoDimensionArray for tableView.reloadData to reload
+            self.twoDimensionArray[1] = ExpandedFilm(isExpanded: self.setExpand, info: self.characters)
+            self.tableView.reloadData()
+        }
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton()
