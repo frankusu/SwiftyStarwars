@@ -8,6 +8,7 @@
 
 import UIKit
 enum Starwars : Int {
+    case details = 0
     case characters = 1
     case planets = 2
     case starships = 3
@@ -38,7 +39,7 @@ class FilmDetailController: UITableViewController {
     
     // To create expandable table sections
     lazy var twoDimensionArray = [
-        ExpandedFilm(isExpanded: setExpand, info: filmDetails),
+        ExpandedFilm(isExpanded: false, info: filmDetails),
         ExpandedFilm(isExpanded: setExpand, info: characters),
         ExpandedFilm(isExpanded: setExpand, info: planets),
         ExpandedFilm(isExpanded: setExpand, info: starships),
@@ -158,6 +159,7 @@ extension FilmDetailController {
         dispatchGroup.notify(queue: DispatchQueue.main) {
             print("Successfully retrieved all data")
             // Update twoDimensionArray for tableView.reloadData to reload
+            self.twoDimensionArray[Starwars.details.rawValue] = ExpandedFilm(isExpanded: self.setExpand, info: self.filmDetails)
             self.twoDimensionArray[Starwars.characters.rawValue] = ExpandedFilm(isExpanded: self.setExpand, info: self.characters)
             self.twoDimensionArray[Starwars.planets.rawValue] = ExpandedFilm(isExpanded: self.setExpand, info: self.planets)
             self.twoDimensionArray[Starwars.starships.rawValue] = ExpandedFilm(isExpanded: self.setExpand, info: self.starships)
