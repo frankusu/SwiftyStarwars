@@ -7,11 +7,11 @@
 //
 
 import UIKit
-
 class DetailController: UITableViewController {
 
     let starwars = "Starwars".map{String($0)}
     fileprivate let cellId = "detailCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)

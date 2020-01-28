@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ExpandedFilm {
+struct ExpandedFilm<Element> {
     var isExpanded : Bool
-    var info : [Any]
+    var info : [Element]
 }

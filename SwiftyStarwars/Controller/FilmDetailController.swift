@@ -76,7 +76,7 @@ class FilmDetailController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        cell.textLabel?.text = twoDimensionArray[indexPath.section].info[indexPath.row] as? String
+        cell.textLabel?.text = twoDimensionArray[indexPath.section].info[indexPath.row]
         return cell
     }
     
@@ -88,6 +88,8 @@ class FilmDetailController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detail = twoDimensionArray[indexPath.section].info[indexPath.row]
+        
         navigationController?.pushViewController(DetailController(), animated: true)
     }
 }
@@ -168,4 +170,15 @@ extension FilmDetailController {
             self.tableView.reloadData()
         }
     }
+}
+
+// From Stackoverflow: How can I use Swift’s Codable to encode into a dictionary?
+extension Encodable {
+  func asDictionary() throws -> [String: Any] {
+    let data = try JSONEncoder().encode(self)
+    guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+      throw NSError()
+    }
+    return dictionary
+  }
 }
