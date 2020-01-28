@@ -54,6 +54,7 @@ class FilmDetailController: UITableViewController {
     ]
     //TODO: Make url a dictionary part of names array so don't need to duplicate
     lazy var twoDimensionUrl = [
+        ExpandedFilm(isExpanded: setExpand, info: []),
         ExpandedFilm(isExpanded: setExpand, info: charactersDetailUrl),
         ExpandedFilm(isExpanded: setExpand, info: planetsDetailUrl),
         ExpandedFilm(isExpanded: setExpand, info: starshipsDetailUrl),
@@ -106,8 +107,9 @@ class FilmDetailController: UITableViewController {
         if indexPath.section == 0 {
             tableView.deselectRow(at: indexPath, animated: true)
         } else {
-            detailController.detailUrl = charactersDetailUrl[indexPath.row]
-            print(characters[indexPath.row],charactersDetailUrl[indexPath.row])
+            print("Section: \(indexPath.section) Row: \(indexPath.row)")
+            detailController.detailUrl = twoDimensionUrl[indexPath.section].info[indexPath.row]
+            print(characters[indexPath.row],detailController.detailUrl)
             navigationController?.pushViewController(DetailController(), animated: true)
         }
         
@@ -131,52 +133,56 @@ extension FilmDetailController {
     }
 
     //TODO: Refactor please
+    //TODO: Use enum to add error handling message
     func fetchAllData() {
         let dispatchGroup = DispatchGroup()
         
-        for (index,url) in charactersUrl.enumerated() {
+        for url in charactersUrl {
             dispatchGroup.enter()
             Service.shared.fetchCharacter(url: url) { (result, error) in
                 dispatchGroup.leave()
-//                print("Index \(index) :\(result!.name)")
-                print("Index \(index) :\(result!.url)")
-                self.characters.append(result!.name)
-                self.charactersDetailUrl.append(result!.url)
+                guard let result = result else {return}
+                self.characters.append(result.name)
+                self.charactersDetailUrl.append(result.url)
             }
         }
-        for (index,url) in planetsUrl.enumerated() {
+        for url in planetsUrl {
             dispatchGroup.enter()
             Service.shared.fetchPlanet(url: url) { (result, error) in
                 dispatchGroup.leave()
-                print("Index \(index) :\(result!.name)")
-                self.planets.append(result!.name)
+                guard let result = result else {return}
+                self.planets.append(result.name)
+                self.planetsDetailUrl.append(result.url)
             }
         }
         
-        for (index,url) in starshipsUrl.enumerated() {
+        for url in starshipsUrl {
             dispatchGroup.enter()
             Service.shared.fetchStarship(url: url) { (result, error) in
                 dispatchGroup.leave()
-                print("Index \(index) :\(result!.name)")
-                self.starships.append(result!.name)
+                guard let result = result else {return}
+                self.starships.append(result.name)
+                self.starshipsDetailUrl.append(result.url)
             }
         }
         
-        for (index,url) in vehiclesUrl.enumerated() {
+        for url in vehiclesUrl {
             dispatchGroup.enter()
             Service.shared.fetchVehicle(url: url) { (result, error) in
                 dispatchGroup.leave()
-                print("Index \(index) :\(result!.name)")
-                self.vehicles.append(result!.name)
+                guard let result = result else {return}
+                self.vehicles.append(result.name)
+                self.vehiclesDetailUrl.append(result.url)
             }
         }
         
-        for (index,url) in speciesUrl.enumerated() {
+        for url in speciesUrl {
             dispatchGroup.enter()
             Service.shared.fetchSpecie(url: url) { (result, error) in
                 dispatchGroup.leave()
-                print("Index \(index) :\(result!.name)")
-                self.species.append(result!.name)
+                guard let result = result else {return}
+                self.species.append(result.name)
+                self.speciesDetailUrl.append(result.url)
             }
         }
 

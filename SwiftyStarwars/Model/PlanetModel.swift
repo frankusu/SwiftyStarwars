@@ -14,6 +14,11 @@ struct Planets : Decodable {
 
 struct Planet : Decodable {
     let name : String
+    let url : String
+}
+
+struct PlanetDetail : Decodable {
+    let name : String
     let rotationPeriod : String
     let orbitalPeriod : String
     let diameter : String
@@ -23,12 +28,4 @@ struct Planet : Decodable {
     let surfaceWater : String
     let population : String
 }
-//"name": "Alderaan",
-//"rotation_period": "24",
-//"orbital_period": "364",
-//"diameter": "12500",
-//"climate": "temperate",
-//"gravity": "1 standard",
-//"terrain": "grasslands, mountains",
-//"surface_water": "40",
-//"population": "2000000000",
+

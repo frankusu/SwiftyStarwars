@@ -15,6 +15,11 @@ struct Species : Decodable {
 // Technically species is singular and plural but compiler...
 struct Specie : Decodable {
     let name : String
+    let url : String
+}
+
+struct SpecieDetail : Decodable {
+    let name : String
     let classification : String
     let designation : String
     let averageHeight : String
@@ -25,14 +30,3 @@ struct Specie : Decodable {
     let homeworld : String?
     let language : String
 }
-
-//"name": "Hutt",
-//"classification": "gastropod",
-//"designation": "sentient",
-//"average_height": "300",
-//"skin_colors": "green, brown, tan",
-//"hair_colors": "n/a",
-//"eye_colors": "yellow, red",
-//"average_lifespan": "1000",
-//"homeworld": "https://swapi.co/api/planets/24/",
-//"language": "Huttese",

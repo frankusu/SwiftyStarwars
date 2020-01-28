@@ -55,7 +55,7 @@ class Service {
     
     func fetchGenericData<T : Decodable>(urlString : String, completion: @escaping (T?, Error?) -> () ){
         guard let url = URL(string: urlString) else {return}
-        print("T is of type", T.self)
+//        print("T is of type", T.self)
         URLSession.shared.dataTask(with: url) {data,response,error in
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase

@@ -13,7 +13,6 @@ class DetailController: UITableViewController {
     fileprivate let cellId = "detailCell"
     
     var detailUrl = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
