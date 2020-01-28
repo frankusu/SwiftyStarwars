@@ -88,7 +88,6 @@ class FilmDetailController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detail = twoDimensionArray[indexPath.section].info[indexPath.row]
         
         navigationController?.pushViewController(DetailController(), animated: true)
     }
