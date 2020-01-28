@@ -34,7 +34,7 @@ class FilmDetailController: UITableViewController {
     lazy var twoDimensionArray = [
         ExpandedFilm(isExpanded: setExpand, info: filmDetails),
         ExpandedFilm(isExpanded: setExpand, info: characters),
-//        ExpandedFilm(isExpanded: setExpand, info: planets),
+        ExpandedFilm(isExpanded: setExpand, info: planets),
 //        ExpandedFilm(isExpanded: setExpand, info: starships),
 //        ExpandedFilm(isExpanded: setExpand, info: vehicles),
 //        ExpandedFilm(isExpanded: setExpand, info: species)
@@ -44,6 +44,7 @@ class FilmDetailController: UITableViewController {
         navigationItem.title = "Film Detail"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         fetchCharacter()
+        fetchPlanet()
     }
     
     func fetchCharacter() {
@@ -63,6 +64,27 @@ class FilmDetailController: UITableViewController {
             print("Successfully retrieved all character names")
             // Need to update twoDimensionArray for tableView.reloadData to reload
             self.twoDimensionArray[1] = ExpandedFilm(isExpanded: self.setExpand, info: self.characters)
+            self.tableView.reloadData()
+        }
+    }
+    
+    func fetchPlanet() {
+        let planetGroup = DispatchGroup()
+        for (index,url) in planetsUrl.enumerated() {
+            planetGroup.enter()
+            Service.shared.fetchPlanet(url: url) { (planet, error) in
+                if let error = error {
+                    print("Error fetching character", error)
+                }
+                planetGroup.leave()
+                print("Index \(index) :\(planet!.name)")
+                self.planets.append(planet!.name)
+            }
+        }
+        planetGroup.notify(queue: DispatchQueue.main) {
+            print("Successfully retrieved all character names")
+            // Need to update twoDimensionArray for tableView.reloadData to reload
+            self.twoDimensionArray[2] = ExpandedFilm(isExpanded: self.setExpand, info: self.planets)
             self.tableView.reloadData()
         }
     }
