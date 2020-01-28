@@ -28,18 +28,21 @@ class FilmDetailController: UITableViewController {
     lazy var twoDimensionArray = [
         ExpandedFilm(isExpanded: setExpand, info: filmDetails),
         ExpandedFilm(isExpanded: setExpand, info: characters),
-        ExpandedFilm(isExpanded: setExpand, info: planets),
-        ExpandedFilm(isExpanded: setExpand, info: starships),
-        ExpandedFilm(isExpanded: setExpand, info: vehicles),
-        ExpandedFilm(isExpanded: setExpand, info: species)
+//        ExpandedFilm(isExpanded: setExpand, info: planets),
+//        ExpandedFilm(isExpanded: setExpand, info: starships),
+//        ExpandedFilm(isExpanded: setExpand, info: vehicles),
+//        ExpandedFilm(isExpanded: setExpand, info: species)
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Film Detail"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-    
+        fetchData()
     }
     
+    func fetchData() {
+        Service.shared.fetchCharacters(characters: characters)
+    }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton()
         print("Section", section)
@@ -54,7 +57,6 @@ class FilmDetailController: UITableViewController {
     }
     
     @objc func handleExpandClose(button : UIButton) {
-        
         let section = button.tag
         var indexPaths = [IndexPath]()
         for index in twoDimensionArray[section].info.indices {
@@ -68,7 +70,6 @@ class FilmDetailController: UITableViewController {
         } else {
             tableView.insertRows(at: indexPaths, with: .fade)
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -84,6 +85,7 @@ class FilmDetailController: UITableViewController {
         cell.textLabel?.text = twoDimensionArray[indexPath.section].info[indexPath.row] as? String
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !twoDimensionArray[section].isExpanded {
             return 0

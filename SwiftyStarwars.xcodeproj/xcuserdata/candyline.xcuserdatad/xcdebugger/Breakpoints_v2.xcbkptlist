@@ -20,5 +20,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BDE95C5E-B47C-41F0-88F5-2E148EFF5337"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftyStarwars/Service/Service.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "fetchCharacters(characters:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BDE95C5E-B47C-41F0-88F5-2E148EFF5337 - 3908735efcdc54d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in SwiftyStarwars.Service.fetchCharacters(characters: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "SwiftyStarwars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/candyline/Developer/SwiftyStarwars/SwiftyStarwars/Service/Service.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "264">
+               </Location>
+               <Location
+                  uuid = "BDE95C5E-B47C-41F0-88F5-2E148EFF5337 - fda676507f45cbe4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in closure #2 () -&gt; () in SwiftyStarwars.Service.fetchCharacters(characters: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "SwiftyStarwars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/candyline/Developer/SwiftyStarwars/SwiftyStarwars/Service/Service.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
