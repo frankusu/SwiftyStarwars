@@ -25,7 +25,7 @@ struct Starship : Decodable {
     let consumables : String
     let hyperdriveRating : String
     let MGLT : String
-    let startshipClass : String
+    let startshipClass : String?
     
 }
 //"name": "Executor",

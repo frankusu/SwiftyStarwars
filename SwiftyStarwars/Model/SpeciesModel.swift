@@ -22,7 +22,7 @@ struct Specie : Decodable {
     let hairColors : String
     let eyeColors : String
     let averageLifespan : String
-    let homeworld : String
+    let homeworld : String?
     let language : String
 }
 

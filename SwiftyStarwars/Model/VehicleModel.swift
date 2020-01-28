@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Vehicles {
+struct Vehicles : Decodable {
     let results : [Vehicle]
 }
 
-struct Vehicle {
+struct Vehicle : Decodable {
     let name : String
     let model : String
     let manufacturer : String

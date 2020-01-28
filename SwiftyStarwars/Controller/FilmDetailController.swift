@@ -41,9 +41,9 @@ class FilmDetailController: UITableViewController {
         ExpandedFilm(isExpanded: setExpand, info: filmDetails),
         ExpandedFilm(isExpanded: setExpand, info: characters),
         ExpandedFilm(isExpanded: setExpand, info: planets),
-//        ExpandedFilm(isExpanded: setExpand, info: starships),
-//        ExpandedFilm(isExpanded: setExpand, info: vehicles),
-//        ExpandedFilm(isExpanded: setExpand, info: species)
+        ExpandedFilm(isExpanded: setExpand, info: starships),
+        ExpandedFilm(isExpanded: setExpand, info: vehicles),
+        ExpandedFilm(isExpanded: setExpand, info: species)
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +107,7 @@ extension FilmDetailController {
         }
     }
 
-    //TODO: Refactor later on
+    //TODO: Refactor please
     func fetchAllData() {
         let dispatchGroup = DispatchGroup()
         
@@ -127,12 +127,42 @@ extension FilmDetailController {
                 self.planets.append(result!.name)
             }
         }
+        
+        for (index,url) in starshipsUrl.enumerated() {
+            dispatchGroup.enter()
+            Service.shared.fetchStarship(url: url) { (result, error) in
+                dispatchGroup.leave()
+                print("Index \(index) :\(result!.name)")
+                self.starships.append(result!.name)
+            }
+        }
+        
+        for (index,url) in vehiclesUrl.enumerated() {
+            dispatchGroup.enter()
+            Service.shared.fetchVehicle(url: url) { (result, error) in
+                dispatchGroup.leave()
+                print("Index \(index) :\(result!.name)")
+                self.vehicles.append(result!.name)
+            }
+        }
+        
+        for (index,url) in speciesUrl.enumerated() {
+            dispatchGroup.enter()
+            Service.shared.fetchSpecie(url: url) { (result, error) in
+                dispatchGroup.leave()
+                print("Index \(index) :\(result!.name)")
+                self.species.append(result!.name)
+            }
+        }
 
         dispatchGroup.notify(queue: DispatchQueue.main) {
             print("Successfully retrieved all data")
             // Update twoDimensionArray for tableView.reloadData to reload
             self.twoDimensionArray[Starwars.characters.rawValue] = ExpandedFilm(isExpanded: self.setExpand, info: self.characters)
             self.twoDimensionArray[Starwars.planets.rawValue] = ExpandedFilm(isExpanded: self.setExpand, info: self.planets)
+            self.twoDimensionArray[Starwars.starships.rawValue] = ExpandedFilm(isExpanded: self.setExpand, info: self.starships)
+            self.twoDimensionArray[Starwars.vehicles.rawValue] = ExpandedFilm(isExpanded: self.setExpand, info: self.vehicles)
+            self.twoDimensionArray[Starwars.species.rawValue] = ExpandedFilm(isExpanded: self.setExpand, info: self.species)
             self.tableView.reloadData()
         }
     }
