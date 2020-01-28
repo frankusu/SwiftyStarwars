@@ -14,17 +14,23 @@ class FilmDetailController: UITableViewController {
     fileprivate var setExpand = true
     fileprivate let categoryHeader = ["Details","Characters","Planets","Starships","Vehicles","Species"]
     
+    //Probably can put these in a model object
     var filmPackage = [[String]]()
     var filmDetails = [String]()
+    
+    var charactersUrl = [String]()
+    var planetsUrl = [String]()
+    var starshipsUrl = [String]()
+    var vehiclesUrl = [String]()
+    var speciesUrl = [String]()
+    
     var characters = [String]()
     var planets = [String]()
     var starships = [String]()
     var vehicles = [String]()
     var species = [String]()
-//    var twoDimensionArray = [[]]
-//    let characters = ["LukeSkywalker","Yoda Boi"," Obi wan my true one","Chubaka","Piew piew",]
-//    let vehicles = ["deathStar?","x-wing", "bmw x3", "GTR"]
-//    let planets = ["Arrakis","Death Star","Pluto"]
+    
+    
     lazy var twoDimensionArray = [
         ExpandedFilm(isExpanded: setExpand, info: filmDetails),
         ExpandedFilm(isExpanded: setExpand, info: characters),
@@ -37,11 +43,14 @@ class FilmDetailController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "Film Detail"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        fetchData()
+        fetchCharacter()
     }
     
-    func fetchData() {
-        Service.shared.fetchCharacters(characters: characters)
+    func fetchCharacter() {
+        for url in charactersUrl {
+            print("fetchCharacter",url)
+        }
+//        Service.shared.fetchCharacter(url: <#T##String#>, completion: <#T##(Character?, Error?) -> ()#>)
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton()

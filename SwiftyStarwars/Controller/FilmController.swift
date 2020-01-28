@@ -66,11 +66,11 @@ extension FilmController {
         filmMeta.append("Release Date: \(filmDetail.releaseDate)")
         
         dc.filmDetails = filmMeta
-        dc.characters = filmDetail.characters
-        dc.planets = filmDetail.planets
-        dc.starships = filmDetail.starships
-        dc.vehicles = filmDetail.vehicles
-        dc.species = filmDetail.species
+        dc.charactersUrl = filmDetail.characters
+        dc.planetsUrl = filmDetail.planets
+        dc.starshipsUrl = filmDetail.starships
+        dc.vehiclesUrl = filmDetail.vehicles
+        dc.speciesUrl = filmDetail.species
 
     }
 }
