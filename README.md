@@ -9,3 +9,6 @@ A Swift wrapper for The Star Wars API https://swapi.co/
 ## Bonus ##
 - [x] One or more detail pages for characters, vehicles, planets (should be accessible from film detail page)
 - [ ] Client side search filter on the films list page to filter by title or description
+
+## Demo Video ##
+https://youtu.be/-xDv014MJLE
