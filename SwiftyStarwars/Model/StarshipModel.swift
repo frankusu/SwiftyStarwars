@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct Starships : Decodable {
-    let results : [Starship]
-}
-
 struct Starship : Decodable {
     let name : String
     let url : String

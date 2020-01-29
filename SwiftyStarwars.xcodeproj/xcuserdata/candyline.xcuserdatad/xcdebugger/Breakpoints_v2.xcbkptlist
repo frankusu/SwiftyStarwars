@@ -20,5 +20,128 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0ACBDEE7-9320-4D08-81DA-98D3EF540F0B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftyStarwars/Controller/DetailController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "DetailController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "0ACBDEE7-9320-4D08-81DA-98D3EF540F0B - aefd373fb794fab"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftyStarwars.DetailController.detailUrl.getter : Swift.String"
+                  moduleName = "SwiftyStarwars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/candyline/Developer/SwiftyStarwars/SwiftyStarwars/Controller/DetailController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "120">
+               </Location>
+               <Location
+                  uuid = "0ACBDEE7-9320-4D08-81DA-98D3EF540F0B - 88b53e2b70405f57"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftyStarwars.DetailController.detailUrl.setter : Swift.String"
+                  moduleName = "SwiftyStarwars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/candyline/Developer/SwiftyStarwars/SwiftyStarwars/Controller/DetailController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  uuid = "0ACBDEE7-9320-4D08-81DA-98D3EF540F0B - 48d3145b7168b3a6"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftyStarwars.DetailController.detailUrl.modify : Swift.String"
+                  moduleName = "SwiftyStarwars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/candyline/Developer/SwiftyStarwars/SwiftyStarwars/Controller/DetailController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "0ACBDEE7-9320-4D08-81DA-98D3EF540F0B - 53516193125bf6fc"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftyStarwars.DetailController.detailUrl.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "SwiftyStarwars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/candyline/Developer/SwiftyStarwars/SwiftyStarwars/Controller/DetailController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "0ACBDEE7-9320-4D08-81DA-98D3EF540F0B - 9b4b992bba486a21"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftyStarwars.DetailController.init(style: __C.UITableViewStyle) -&gt; SwiftyStarwars.DetailController"
+                  moduleName = "SwiftyStarwars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/candyline/Developer/SwiftyStarwars/SwiftyStarwars/Controller/DetailController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "296">
+               </Location>
+               <Location
+                  uuid = "0ACBDEE7-9320-4D08-81DA-98D3EF540F0B - 6455f5c87e5c18eb"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftyStarwars.DetailController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; SwiftyStarwars.DetailController"
+                  moduleName = "SwiftyStarwars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/candyline/Developer/SwiftyStarwars/SwiftyStarwars/Controller/DetailController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "320">
+               </Location>
+               <Location
+                  uuid = "0ACBDEE7-9320-4D08-81DA-98D3EF540F0B - 532a025c4d429990"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftyStarwars.DetailController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;SwiftyStarwars.DetailController&gt;"
+                  moduleName = "SwiftyStarwars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/candyline/Developer/SwiftyStarwars/SwiftyStarwars/Controller/DetailController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "296">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

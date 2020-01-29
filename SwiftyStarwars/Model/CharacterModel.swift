@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct Characters : Decodable {
-    let results : [Character]
-}
-
 struct Character : Decodable {
     let name : String
     let url : String

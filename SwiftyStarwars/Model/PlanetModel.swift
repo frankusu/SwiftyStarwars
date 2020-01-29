@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct Planets : Decodable {
-    let results : [Planet]
-}
-
 struct Planet : Decodable {
     let name : String
     let url : String

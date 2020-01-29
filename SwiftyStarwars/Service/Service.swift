@@ -53,6 +53,10 @@ class Service {
         fetchGenericData(urlString: url, completion: completion)
     }
     
+    func fetchCharacterDetail(url : String, completion: @escaping (CharacterDetail?,Error?) -> () ) {
+        fetchGenericData(urlString: url, completion: completion)
+    }
+    
     func fetchGenericData<T : Decodable>(urlString : String, completion: @escaping (T?, Error?) -> () ){
         guard let url = URL(string: urlString) else {return}
 //        print("T is of type", T.self)

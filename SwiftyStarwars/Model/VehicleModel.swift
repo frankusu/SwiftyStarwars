@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct Vehicles : Decodable {
-    let results : [Vehicle]
-}
-
 struct Vehicle : Decodable {
     let name : String
     let url : String

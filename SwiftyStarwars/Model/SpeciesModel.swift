@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct Species : Decodable {
-    let results : [Specie]
-}
-
 // Technically species is singular and plural but compiler...
 struct Specie : Decodable {
     let name : String

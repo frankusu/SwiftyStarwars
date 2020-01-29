@@ -21,7 +21,9 @@ class FilmDetailController: UITableViewController {
     fileprivate var setExpand = true
     fileprivate let categoryHeader = ["Details","Characters","Planets","Starships","Vehicles","Species"]
     
-    // Probably can reduce these or put them in model object
+    //TODO: Put these into dictionary like [url: String, name : String, detailUrl : String]
+    // let filmDetailObject = [url: String, name : String, detailUrl : String]
+    // let filmDetailObjects = [filmDetailObject]
     var filmPackage = [[String]]()
     var filmDetails = [String]()
     
@@ -110,7 +112,8 @@ class FilmDetailController: UITableViewController {
             print("Section: \(indexPath.section) Row: \(indexPath.row)")
             detailController.detailUrl = twoDimensionUrl[indexPath.section].info[indexPath.row]
             print(characters[indexPath.row],detailController.detailUrl)
-            navigationController?.pushViewController(DetailController(), animated: true)
+            // Make sure to pass in declared controller, other wise value won't pass in
+            navigationController?.pushViewController(detailController, animated: true)
         }
         
     }
@@ -198,15 +201,4 @@ extension FilmDetailController {
             self.tableView.reloadData()
         }
     }
-}
-
-// From Stackoverflow: How can I use Swift’s Codable to encode into a dictionary?
-extension Encodable {
-  func asDictionary() throws -> [String: Any] {
-    let data = try JSONEncoder().encode(self)
-    guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-      throw NSError()
-    }
-    return dictionary
-  }
 }
