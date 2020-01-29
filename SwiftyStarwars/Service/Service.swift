@@ -32,7 +32,7 @@ class Service {
             }
         }.resume()
     }
-    
+    //MARK: FilmDetailController functions
     func fetchCharacter(url : String, completion: @escaping (Character?,Error?) -> () ) {
         fetchGenericData(urlString: url, completion: completion)
     }
@@ -53,7 +53,22 @@ class Service {
         fetchGenericData(urlString: url, completion: completion)
     }
     
+    //MARK: DetailController functions
     func fetchCharacterDetail(url : String, completion: @escaping (CharacterDetail?,Error?) -> () ) {
+        fetchGenericData(urlString: url, completion: completion)
+    }
+    
+    func fetchPlanetDetail(url : String, completion: @escaping (PlanetDetail?,Error?) -> () ) {
+        fetchGenericData(urlString: url, completion: completion)
+    }
+    
+    func fetchStarshipDetail(url : String, completion: @escaping (StarshipDetail?,Error?) -> () ) {
+        fetchGenericData(urlString: url, completion: completion)
+    }
+    func fetchVehicleDetail(url : String, completion: @escaping (VehicleDetail?,Error?) -> () ) {
+        fetchGenericData(urlString: url, completion: completion)
+    }
+    func fetchSpecieDetail(url : String, completion: @escaping (SpecieDetail?,Error?) -> () ) {
         fetchGenericData(urlString: url, completion: completion)
     }
     

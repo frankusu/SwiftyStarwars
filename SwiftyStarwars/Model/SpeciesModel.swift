@@ -23,6 +23,23 @@ struct SpecieDetail : Decodable {
     let hairColors : String
     let eyeColors : String
     let averageLifespan : String
-    let homeworld : String?
+//    let homeworld : String?
     let language : String
+    
+    var dict : [String:String] {
+        let dict : [String:String] = [
+         "name" : name,
+         "classification" : classification,
+         "designation" : designation,
+         "averageHeight" : averageHeight,
+         "skinColors" : skinColors,
+         "hairColors" : hairColors,
+         "eyeColors" : eyeColors,
+         "averageLifespan" : averageLifespan,
+//         "homeworld" : homeworld ?? "homworld",
+         "language" : language
+            
+        ]
+        return dict
+    }
 }

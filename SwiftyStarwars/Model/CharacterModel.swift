@@ -24,7 +24,7 @@ struct CharacterDetail : Decodable {
     let birthYear : String
     let gender : String
     
-    var charDict : [String:String] {
+    var dict : [String:String] {
         let dict : [String:String] = [
             "name" : name,
             "height" : height,

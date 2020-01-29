@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         let filmController = FilmController()
         let navController = UINavigationController(rootViewController: filmController)
-        navController.navigationBar.barTintColor = .red
+        navController.navigationBar.barTintColor = .yellow
         navController.navigationBar.tintColor = .black
         window?.makeKeyAndVisible()
         window?.rootViewController = navController

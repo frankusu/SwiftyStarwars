@@ -111,7 +111,7 @@ class FilmDetailController: UITableViewController {
         } else {
             print("Section: \(indexPath.section) Row: \(indexPath.row)")
             detailController.detailUrl = twoDimensionUrl[indexPath.section].info[indexPath.row]
-            print(characters[indexPath.row],detailController.detailUrl)
+            detailController.section = indexPath.section
             // Make sure to pass in declared controller, other wise value won't pass in
             navigationController?.pushViewController(detailController, animated: true)
         }

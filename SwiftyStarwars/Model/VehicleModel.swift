@@ -25,4 +25,21 @@ struct VehicleDetail : Decodable {
     let cargoCapacity : String
     let consumables : String
     let vehicleClass : String
+    
+    var dict : [String:String] {
+        let dict : [String:String] = [
+            "name" : name,
+            "model" : model,
+            "manufacturer" : manufacturer,
+            "costInCredits" : costInCredits,
+            "length" : length,
+            "maxAtmospheringSpeed" : maxAtmospheringSpeed,
+            "crew" : crew,
+            "passengers" : passengers,
+            "cargoCapacity" : cargoCapacity,
+            "consumables" : consumables,
+            "vehicleClass" : vehicleClass
+        ]
+        return dict
+    }
 }

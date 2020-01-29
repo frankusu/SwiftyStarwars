@@ -27,5 +27,25 @@ struct StarshipDetail : Decodable {
     let consumables : String
     let hyperdriveRating : String
     let MGLT : String
-    let startshipClass : String?
+//    let startshipClass : String?
+    
+    var dict : [String:String] {
+        let dict : [String:String] = [
+            "name" : name,
+            "model" : model,
+            "manufacturer" : manufacturer,
+            "costInCredits" : costInCredits,
+            "length" : length,
+            "maxAtmospheringSpeed" : maxAtmospheringSpeed,
+            "crew" : crew,
+            "passengers" : passengers,
+            "cargoCapacity" : cargoCapacity,
+            "consumables" : consumables,
+            "hyperdriveRating" : hyperdriveRating,
+            "MGLT" : MGLT,
+//            "startshipClass" : startshipClass ?? "No ship class"
+        ]
+        
+        return dict
+    }
 }

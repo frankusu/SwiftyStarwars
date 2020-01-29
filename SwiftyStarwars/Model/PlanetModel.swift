@@ -23,5 +23,22 @@ struct PlanetDetail : Decodable {
     let terrain : String
     let surfaceWater : String
     let population : String
+    
+    var dict : [String:String] {
+        let dict : [String:String] = [
+            "name" : name,
+            "rotationPeriod" : rotationPeriod,
+            "orbitalPeriod" : orbitalPeriod,
+            "diameter" : diameter,
+            "climate" : climate,
+            "gravity" : gravity,
+            "terrain" : terrain,
+            "surfaceWater" : surfaceWater,
+            "population" : population
+            
+        ]
+        
+        return dict
+    }
 }
 

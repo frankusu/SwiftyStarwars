@@ -14,24 +14,32 @@ class DetailController: UITableViewController {
     
     var detailUrl : String = "Nothing yet"
     var detailArray = [String]()
-    
-    func fetchCharacter() {
-        print("detailUrl is: ", detailUrl)
-        Service.shared.fetchCharacterDetail(url: detailUrl) { (result, error) in
-            for (key,value) in result!.charDict {
-                print("Key: \(key), Value: \(value)")
-                self.detailArray.append("\(key) : \(value)")
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
+    var section : Int = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        fetchCharacter()
+//        fetchPlanet()
+        switch section {
+        case 1:
+            print("fetchCharacterDetail")
+            fetchCharacterDetail()
+        case 2:
+            print("fetchPlanetDetail")
+            fetchPlanetDetail()
+        case 3:
+            print("fetchStarshipDetail")
+            fetchStarshipDetail()
+        case 4:
+            print("fetchVehicleDetail")
+            fetchVehicleDetail()
+        case 5:
+            print("fetchSpecieDetail")
+            fetchSpecieDetail()
+        default:
+            print("Invalid section selected no action required.")
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,13 +58,62 @@ class DetailController: UITableViewController {
     }
 }
 
-// From Stackoverflow: How can I use Swift’s Codable to encode into a dictionary?
-extension Encodable {
-  func asDictionary() throws -> [String: Any] {
-    let data = try JSONEncoder().encode(self)
-    guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-      throw NSError()
+extension DetailController {
+    
+    func fetchCharacterDetail() {
+        Service.shared.fetchCharacterDetail(url: detailUrl) { (result, error) in
+            for (key,value) in result!.dict {
+                self.detailArray.append("\(key) : \(value)")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
-    return dictionary
-  }
+    
+    func fetchPlanetDetail() {
+        Service.shared.fetchPlanetDetail(url: detailUrl) { (result, error) in
+            for (key,value) in result!.dict {
+                self.detailArray.append("\(key) : \(value)")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func fetchStarshipDetail() {
+        Service.shared.fetchStarshipDetail(url: detailUrl) { (result, error) in
+            for (key,value) in result!.dict {
+                self.detailArray.append("\(key) : \(value)")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func fetchVehicleDetail() {
+        Service.shared.fetchVehicleDetail(url: detailUrl) { (result, error) in
+            for (key,value) in result!.dict {
+                self.detailArray.append("\(key) : \(value)")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func fetchSpecieDetail() {
+        Service.shared.fetchSpecieDetail(url: detailUrl) { (result, error) in
+            for (key,value) in result!.dict {
+                self.detailArray.append("\(key) : \(value)")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
 }
+
