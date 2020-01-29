@@ -8,16 +8,31 @@
 
 import UIKit
 
-class FilmController: UITableViewController {
+class FilmController: UITableViewController, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print("Updating")
+    }
+    
     
     fileprivate let cellId = "filmCell"
     fileprivate var filmResults = [Film]()
-
+    fileprivate var searchController = UISearchController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Films"
         tableView.register(SubtitleViewCell.self, forCellReuseIdentifier: cellId)
         fetchFilms()
+        
+        searchController = ({
+            let sc = UISearchController(searchResultsController: nil)
+            sc.searchResultsUpdater = self
+            sc.obscuresBackgroundDuringPresentation = false
+            sc.searchBar.sizeToFit()
+            tableView.tableHeaderView = sc.searchBar
+            return sc
+        })()
+        definesPresentationContext =  true
     }
     
     func fetchFilms() {
