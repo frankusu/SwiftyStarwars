@@ -1,5 +1,5 @@
 # SwiftyStarwars
-A Swift wrapper for The Star Wars API https://swapi.co/
+An iOS wrapper using Swift for The Star Wars API https://swapi.co/
 
 
 ## Requirements ##
