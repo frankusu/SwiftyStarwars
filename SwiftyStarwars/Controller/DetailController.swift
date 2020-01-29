@@ -13,12 +13,17 @@ class DetailController: UITableViewController {
     fileprivate let cellId = "detailCell"
     
     var detailUrl : String = "Nothing yet"
+    var detailArray = [String]()
     
     func fetchCharacter() {
         print("detailUrl is: ", detailUrl)
         Service.shared.fetchCharacterDetail(url: detailUrl) { (result, error) in
             for (key,value) in result!.charDict {
                 print("Key: \(key), Value: \(value)")
+                self.detailArray.append("\(key) : \(value)")
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }
@@ -31,12 +36,13 @@ class DetailController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        cell.textLabel?.text = starwars[indexPath.row]
+        cell.textLabel?.text = detailArray[indexPath.row]
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return starwars.count
+        return detailArray.count
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
