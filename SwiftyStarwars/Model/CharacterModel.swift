@@ -23,4 +23,18 @@ struct CharacterDetail : Decodable {
     let skinColor : String
     let birthYear : String
     let gender : String
+    
+    var charDict : [String:String] {
+        let dict : [String:String] = [
+            "name" : name,
+            "height" : height,
+            "mass" : mass,
+            "hairColor" : hairColor,
+            "skinColor" : skinColor,
+            "birthYear" : birthYear,
+            "gender" : gender
+        ]
+        
+        return dict
+    }
 }

@@ -17,7 +17,9 @@ class DetailController: UITableViewController {
     func fetchCharacter() {
         print("detailUrl is: ", detailUrl)
         Service.shared.fetchCharacterDetail(url: detailUrl) { (result, error) in
-            let dictionary = result as? [String:String]
+            for (key,value) in result!.charDict {
+                print("Key: \(key), Value: \(value)")
+            }
         }
     }
     
